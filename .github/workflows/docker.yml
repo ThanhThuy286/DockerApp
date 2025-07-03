@@ -33,7 +33,8 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        IMAGE=ghcr.io/${{ github.actor }}/admissions-website:latest
+        ACTOR_LC=$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')
+        IMAGE=ghcr.io/$ACTOR_LC/admissions-website:latest
         docker build -t $IMAGE .
         docker push $IMAGE
     # - name: Build and push Docker image
